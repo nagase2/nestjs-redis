@@ -9,12 +9,13 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     // ローカルメモリへのキャッシュ。機能的には変わらないのでこれでも良いのかも
-    // CacheModule.register({ isGlobal: true, ttl: 10000, max: 5 }),
+    // こちらのttlはmsで指定
+    //CacheModule.register({ isGlobal: true, ttl: 10000, max: 5 }),
     // 以下はRedisキャッシュとして利用する場合
     CacheModule.register({
       store: redisStore,
       isGlobal: true,
-      ttl: 10, // ←デフォルトttlここは秒単位で指定
+      ttl: 10, // ←デフォルトのttl。ここは秒単位で指定
       // Store-specific configuration:
       host: 'localhost',
       port: 16379,
