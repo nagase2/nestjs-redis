@@ -56,7 +56,7 @@ export class PokemonService {
     console.log('name:', data.name, ' ', data.species);
     // キャッシュを設定する
     // 個別のttl指定はRedisを使う場合は利用できない？
-    await this.cacheService.set(id.toString(), data, 10000);
+    await this.cacheService.set(id.toString(), data, 5000);
     return await `${data.name}`;
   }
 }

@@ -19,6 +19,9 @@ import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 export class PokemonController {
   constructor(private readonly pokemonService: PokemonService) {}
 
+  //🌟ここにアノテーションをつけることにより、同じリクエストだったら
+  //コントローラーの処理自体せずにキャッシュで返すということも可能
+  //（認証認可がうまく動くかどうか不明なので、この方法は使えないかも）
   //@UseInterceptors(CacheInterceptor)
   //@CacheKey('custom-key')
   //@CacheTTL(5000) // override TTL to 30 seconds

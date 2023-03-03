@@ -14,13 +14,6 @@ Authorization: {{token}}
 
 
 
-
-
-###
-
-GET http://localhost:3000  HTTP/1.1
-Authorization: {{token}}
-
 ### 
 POST  http://localhost:3000/pokemon/test  HTTP/1.1
 Authorization: {{token}}
