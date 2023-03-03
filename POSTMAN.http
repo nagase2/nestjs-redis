@@ -1,0 +1,29 @@
+@name = Huachao Mao
+@id = 313
+@address = Wuxi\nChina
+
+@token = Bearer e975b15aa477ee440417ea069e8ef728a22933f0
+
+
+###
+
+// APIからデータを取得する
+// キャッシュにあればキャッシュから取得
+GET http://localhost:3000/pokemon/111
+Authorization: {{token}}
+
+
+
+
+
+###
+
+GET http://localhost:3000  HTTP/1.1
+Authorization: {{token}}
+
+### 
+POST  http://localhost:3000/pokemon/test  HTTP/1.1
+Authorization: {{token}}
+content-type: application/json
+
+{"aa":"aaxxxx","bb":"valu21"}
