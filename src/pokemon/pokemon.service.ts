@@ -37,22 +37,25 @@ export class PokemonService {
    * @returns
    */
   async getPokemonWithLocalCache(id: number): Promise<string> {
-    // check if data is in cache:
+    // キャッシュサービスからデータを取得する
     const cachedData = await this.cacheService.get<{ name: string }>(
       id.toString(),
     );
     // キャッシュが見つかった場合はそのまま返す
     if (cachedData) {
-      console.log(`🐵 Getting data from cache! ${cachedData.name}`);
+      console.log(
+        `🐵 キャッシュが見つかったのでキャッシュから返します。 ${cachedData.name}`,
+      );
       return `${cachedData.name}`;
     }
-    console.log('🈲 Getting data from API');
+    console.log('🈲 キャッシュが見つからなかったので、APIから取得します。');
     // if not, call API and set the cache:
     const { data } = await this.httpService.axiosRef.get(
       `https://pokeapi.co/api/v2/pokemon/${id}`,
     );
     // キャッシュを設定する
-    await this.cacheService.set(id.toString(), data, 1000);
+    // 個別のttl指定はRedisを使う場合は利用できない？
+    await this.cacheService.set(id.toString(), data, 1);
     return await `${data.name}`;
   }
 }
