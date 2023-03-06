@@ -15,10 +15,11 @@ import { ConfigModule } from '@nestjs/config';
     CacheModule.register({
       store: redisStore,
       isGlobal: true,
-      ttl: 10, // ←デフォルトのttl。ここは秒単位で指定
+      ttl: 30, // ←デフォルトのttl。ここは秒単位で指定
       // Store-specific configuration:
       host: 'localhost',
       port: 16379,
+      // max: 3,
     }),
     PokemonModule,
   ],

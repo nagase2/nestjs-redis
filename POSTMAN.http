@@ -9,8 +9,9 @@
 
 // APIからデータを取得する
 // キャッシュにあればキャッシュから取得
-GET http://localhost:3000/pokemon/111
+GET http://localhost:3000/pokemon/21
 Authorization: {{token}}
+
 
 
 

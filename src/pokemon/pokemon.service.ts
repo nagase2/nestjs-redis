@@ -41,7 +41,7 @@ export class PokemonService {
     const cachedData = await this.cacheService.get<{
       name: string;
       species: string;
-    }>(id.toString());
+    }>('poke_' + id.toString());
     // キャッシュが見つかった場合はそのまま返す
     if (cachedData) {
       console.log(`🐵 キャッシュが見つかったのでキャッシュから返します。 `);
@@ -56,7 +56,7 @@ export class PokemonService {
     console.log('name:', data.name, ' ', data.species);
     // キャッシュを設定する
     // 個別のttl指定はRedisを使う場合は利用できない？
-    await this.cacheService.set(id.toString(), data, 5000);
+    await this.cacheService.set('poke_' + id.toString(), data, 3000);
     return await `${data.name}`;
   }
 }
